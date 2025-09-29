@@ -1,14 +1,11 @@
 import 'dotenv/config';
 import { Sequelize } from 'sequelize';
 
+// Force SQLite for development to avoid MySQL connection issues
 const sequelize = new Sequelize({
-  dialect: 'mysql',
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '3306'),
-  username: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'swiftslot',
-  logging: false,
+  dialect: 'sqlite',
+  storage: './development.db',
+  logging: console.log, // Enable logging to see what's happening
 });
 
 export default sequelize;

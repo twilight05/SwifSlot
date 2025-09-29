@@ -79,10 +79,8 @@ const startServer = async (): Promise<void> => {
   }
 };
 
-// Only start server if this file is run directly (not imported for tests)
-if (import.meta.url === `file://${process.argv[1]}`) {
-  startServer();
-}
+// Start the server
+startServer();
 
 // Export app for testing
 export default app;
